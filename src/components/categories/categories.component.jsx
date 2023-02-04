@@ -1,10 +1,7 @@
 import CategoryItem from "../category-item/category-item.component";
 import "./categories.styles.scss";
 
-//Take data form json file
-const categories = require("../../data/categories.json");
-
-const Categories = () => {
+const Categories = ({categories}) => {
     return (
         <div className="categories-container">
             {categories.map((category) => {
