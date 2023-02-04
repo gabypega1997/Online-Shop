@@ -1,9 +1,7 @@
-import Categories from "./components/categories/categories.component";
-
-const categories = require("./data/categories.json");
+import Home from "./routes/home/home.component";
 
 const App = () => {
-    return <Categories categories={categories} />;
+    return <Home />;
 };
 
 export default App;
