@@ -15,17 +15,42 @@ const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
 
+    const resetFormFields = () => {
+        setFormFields(defaultFormFields);
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+        //My code
 
-        if (password === confirmPassword) {
+        // if (password === confirmPassword) {
+        //     const { user } = await createAuthUserWithEmailAndPassword(
+        //         email,
+        //         password
+        //     );
+        //     const userDocRef = await createUserDocumentFromAuth(
+        //         user,
+        //         displayName
+        //     );
+        //     console.log(userDocRef, user);
+        // } else {
+        //     console.error("Confirm password don't match");
+        // }
+        //Explain code from teacher
+        if (password !== confirmPassword) {
+            alert("password do not match");
+            return;
+        }
+
+        try {
             const { user } = await createAuthUserWithEmailAndPassword(
                 email,
                 password
             );
-            const userDocRef = await createUserDocumentFromAuth(user);
-        } else {
-            console.error("Confirm password don't match");
+            await createUserDocumentFromAuth(user, { displayName });
+            resetFormFields();
+        } catch (error) {
+            console.error("user creation encountered an error", error);
         }
     };
 
