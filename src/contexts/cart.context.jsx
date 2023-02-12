@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const CartContext = createContext({
     showDropdown: false,
-    setShowDropdown: () => null,
+    setShowDropdown: () => {},
 });
 
 export const CartProvider = ({ children }) => {
