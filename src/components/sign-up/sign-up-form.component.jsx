@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
     createAuthUserWithEmailAndPassword,
     createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
-import Button from "../button/button.component";
 
+import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
+
+import { UserContext } from "../../contexts/user.context";
 
 import "./sign-up.styles.scss";
 
@@ -19,29 +21,13 @@ const defaultFormFields = {
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
-
+    const { setCurrentUser } = useContext(UserContext);
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        //My code
-
-        // if (password === confirmPassword) {
-        //     const { user } = await createAuthUserWithEmailAndPassword(
-        //         email,
-        //         password
-        //     );
-        //     const userDocRef = await createUserDocumentFromAuth(
-        //         user,
-        //         displayName
-        //     );
-        //     console.log(userDocRef, user);
-        // } else {
-        //     console.error("Confirm password don't match");
-        // }
-        //Explain code from teacher
         if (password !== confirmPassword) {
             alert("password do not match");
             return;
@@ -53,6 +39,7 @@ const SignUpForm = () => {
                 password
             );
             await createUserDocumentFromAuth(user, { displayName });
+            setCurrentUser(user);
             resetFormFields();
         } catch (error) {
             console.error("user creation encountered an error", error);
