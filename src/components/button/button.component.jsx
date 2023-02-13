@@ -5,6 +5,8 @@ const BUTTON_TYPES_CLASSES = {
     inverted: "inverted",
 };
 
+// add another button classes for a one char button
+
 const Button = ({ children, buttonType, ...otherProps }) => {
     return (
         <button
