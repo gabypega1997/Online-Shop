@@ -1,23 +1,18 @@
 import { createContext, useState } from "react";
 
 const addCartItem = (cartItems, productToAdd) => {
-    if (cartItems.length) {
-        cartItems.forEach((item, index) => {
-            if (item.id === productToAdd.id) {
-                item.quantity++;
-                return;
-            }
-            if (index === cartItems.length - 1) {
-                productToAdd.quantity = 1;
-                cartItems.push(productToAdd);
-            }
-        });
-    } else {
-        productToAdd.quantity = 1;
-        cartItems.push(productToAdd);
-    }
+    const existingCartItem = cartItems.find(
+        (cartItem) => cartItem.id === productToAdd.id
+    );
 
-    return cartItems;
+    if (existingCartItem) {
+        return cartItems.map((cartItem) =>
+            cartItem.id === productToAdd.id
+                ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                : cartItem
+        );
+    }
+    return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
 export const CartContext = createContext({
