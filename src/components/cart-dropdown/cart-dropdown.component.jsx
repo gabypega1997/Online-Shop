@@ -6,10 +6,15 @@ import CartItem from "../cart-item/cart-item.component";
 import { CartContext } from "../../contexts/cart.context";
 
 import "./cart-dropdown.styles.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CartDropdown = () => {
     const { cartItems, setShowDropdown } = useContext(CartContext);
+    const navigate = useNavigate();
+
+    const goToCheckoutHandler = () => {
+        navigate("/checkout");
+    };
 
     const toogleDropdown = () => {
         setShowDropdown((showDropdown) => !showDropdown);
@@ -29,9 +34,7 @@ const CartDropdown = () => {
                     <h2>No items </h2>
                 )}
             </div>
-            <Link to="/checkout" onClick={toogleDropdown}>
-                <Button>GO TO CHECKOUT</Button>
-            </Link>
+            <Button onClick={goToCheckoutHandler}>GO TO CHECKOUT</Button>
         </div>
     );
 };
