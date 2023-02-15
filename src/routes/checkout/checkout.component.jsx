@@ -7,13 +7,14 @@ import CheckoutItem from "../../components/checkout-item/checkout-item.component
 import "./checkout.style.scss";
 
 const Checkout = () => {
-    const { cartItems } = useContext(CartContext);
+    const { cartItems, cartSum } = useContext(CartContext);
 
     return (
         <div>
             {cartItems.map((product) => (
                 <CheckoutItem key={product.id} product={product} />
             ))}
+            <div className="summe-conatiner">{`TOTAL: $${cartSum}`}</div>
         </div>
     );
 };

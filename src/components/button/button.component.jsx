@@ -3,6 +3,7 @@ import "./button.styles.scss";
 const BUTTON_TYPES_CLASSES = {
     google: "google-sign-in",
     inverted: "inverted",
+    oneChar:"one-charcter"
 };
 
 // add another button classes for a one char button
