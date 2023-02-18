@@ -67,13 +67,4 @@ export const Body = styled.div`
         font-size: 16px;
     }
 `;
-// .directory-container {
 
-//     .background-image {
-
-//     }
-
-//     .directory-body-container {
-
-//     }
-// }
