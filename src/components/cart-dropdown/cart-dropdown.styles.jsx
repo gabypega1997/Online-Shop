@@ -25,7 +25,7 @@ export const CartButton = styled(Button)`
     margin-top: auto;
 `;
 
-export const EmptyMessage = styled.h2`
+export const EmptyMessage = styled.span`
     font-size: 18px;
     margin: 50px auto;
 `;
