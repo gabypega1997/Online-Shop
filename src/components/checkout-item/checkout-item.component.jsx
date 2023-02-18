@@ -32,7 +32,7 @@ const CheckoutItem = ({ product }) => {
                 <Value>{quantity}</Value>
                 <Arrow onClick={addItemHandler}>&#10095;</Arrow>
             </Quantity>
-            <Span>{price}</Span>
+            <Span>{price} $</Span>
             <RemoveButton onClick={clearItemHandler}>&#10005;</RemoveButton>
         </CheckoutItemContainer>
     );

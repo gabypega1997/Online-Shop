@@ -1,21 +1,26 @@
 import "./form-input.styles.jsx";
-import { FormInputContainer, FormInputLabel, Group } from "./form-input.styles.jsx";
+import {
+    FormInputContainer,
+    FormLabel,
+    Group,
+    InputPassword,
+    SchrinkLabel,
+} from "./form-input.styles.jsx";
 
 const FormInput = ({ label, ...otherProps }) => {
     return (
         <Group>
-            <FormInputContainer {...otherProps} />
-
-            {label && (
-                // <FormInputLabel
-                //     // className={`${
-                //     //     otherProps.value.length === 0 ? "schrink" : ""
-                //     // } form-input-label`}
-                // >
-                //     {label}
-                // </FormInputLabel>
-                {otherProps.value.length }
+            {otherProps.type === "password" ? (
+                <InputPassword {...otherProps} />
+            ) : (
+                <FormInputContainer {...otherProps} />
             )}
+            {label &&
+                (otherProps.value.length !== 0 ? (
+                    <SchrinkLabel>{label}</SchrinkLabel>
+                ) : (
+                    <FormLabel>{label}</FormLabel>
+                ))}
         </Group>
     );
 };

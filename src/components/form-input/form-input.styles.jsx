@@ -25,7 +25,6 @@ export const FormInputContainer = styled.input`
     border: none;
     border-radius: 0;
     border-bottom: 1px solid ${subColor};
-    margin: 25px 0;
 
     &:focus {
         outline: none;
@@ -36,7 +35,7 @@ export const FormInputContainer = styled.input`
     }
 `;
 
-export const FormInputLabel = styled.label`
+export const FormLabel = styled.label`
     color: ${subColor};
     font-size: 16px;
     font-weight: normal;
@@ -46,34 +45,10 @@ export const FormInputLabel = styled.label`
     top: 10px;
     transition: 300ms ease all;
 `;
-export const InputPassword = styled(FormInputLabel).attrs({ type: "password" })`
+export const InputPassword = styled(FormInputContainer).attrs({ type: "password" })`
     letter-spacing: 0.3em;
-    background-color: red;
 `;
 
-export const SchrinkInputLabel = styled(FormInputContainer)`
+export const SchrinkLabel = styled(FormLabel)`
     ${shrinkLabel}
 `;
-// $sub-color: grey;
-// $main-color: black;
-
-// @mixin shrinkLabel {
-
-// }
-
-// .group {
-
-//   .form-input {
-
-//   }
-
-//   input[type='password'] {
-//   }
-
-//   .form-input-label {
-
-//     &.shrink {
-//       @include shrinkLabel();
-//     }
-//   }
-// }

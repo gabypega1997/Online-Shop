@@ -6,7 +6,7 @@ import { CategoriesContext } from "../../contexts/categories.context";
 
 import ProductCart from "../../components/product-card/product-card.component";
 
-import "./category.styles.scss";
+import { CategoryContainer, CategoryTitle } from "./category.styles.jsx";
 
 const Category = () => {
     const { category } = useParams();
@@ -19,9 +19,9 @@ const Category = () => {
 
     return (
         <Fragment>
-            <h2 className="category-title">{category.toLocaleUpperCase()}</h2>
+            <CategoryTitle>{category.toLocaleUpperCase()}</CategoryTitle>
 
-            <div className="category-container">
+            <CategoryContainer>
                 {products &&
                     products.map((product) => (
                         <ProductCart
@@ -29,7 +29,7 @@ const Category = () => {
                             product={product}
                         ></ProductCart>
                     ))}
-            </div>
+            </CategoryContainer>
         </Fragment>
     );
 };
