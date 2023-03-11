@@ -1,9 +1,14 @@
-import Categories from "../../components/categories/categories.component";
+import { Outlet } from 'react-router-dom';
 
-const categories = require("../../data/categories.json");
+import Directory from '../../components/directory/directory.component';
 
 const Home = () => {
-    return <Categories categories={categories} />;
+  return (
+    <div>
+      <Directory />
+      <Outlet />
+    </div>
+  );
 };
 
 export default Home;

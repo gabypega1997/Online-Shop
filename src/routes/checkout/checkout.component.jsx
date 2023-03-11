@@ -1,13 +1,24 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
-import { CartContext } from "../../contexts/cart.context";
+import PaymentForm from "../../components/payment-form/payment-from.component";
+
+import {
+    selectCartItems,
+    selectCartTotal,
+} from "../../store/cart/cart.selector";
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
-import { CheckoutContainer, CheckoutHeader,HeaderBlock, Total } from "./checkout.styles.jsx";
+import {
+    CheckoutContainer,
+    CheckoutHeader,
+    HeaderBlock,
+    Total,
+} from "./checkout.styles";
 
 const Checkout = () => {
-    const { cartItems, cartTotal } = useContext(CartContext);
+    const cartItems = useSelector(selectCartItems);
+    const cartTotal = useSelector(selectCartTotal);
 
     return (
         <CheckoutContainer>
@@ -16,7 +27,7 @@ const Checkout = () => {
                     <span>Product</span>
                 </HeaderBlock>
                 <HeaderBlock>
-                    <span>Description</span>{" "}
+                    <span>Description</span>
                 </HeaderBlock>
                 <HeaderBlock>
                     <span>Quantity</span>
@@ -28,10 +39,11 @@ const Checkout = () => {
                     <span>Remove</span>
                 </HeaderBlock>
             </CheckoutHeader>
-            {cartItems.map((product) => (
-                <CheckoutItem key={product.id} product={product} />
+            {cartItems.map((cartItem) => (
+                <CheckoutItem key={cartItem.id} cartItem={cartItem} />
             ))}
-            <Total>TOTAL: {cartTotal} $</Total>
+            <Total>Total: ${cartTotal}</Total>
+            <PaymentForm/>
         </CheckoutContainer>
     );
 };
