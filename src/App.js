@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -17,7 +17,6 @@ import { setCurentUser } from "./store/user/user.reducer";
 const App = () => {
     const dispatch = useDispatch();
 
-
     useEffect(() => {
         const unsubscribe = onAuthStateChangedListener((user) => {
             if (user) {
@@ -30,7 +29,6 @@ const App = () => {
                     email,
                 }))(user);
 
-            console.log(setCurentUser(pickedUser));
             dispatch(setCurentUser(pickedUser));
         });
 
