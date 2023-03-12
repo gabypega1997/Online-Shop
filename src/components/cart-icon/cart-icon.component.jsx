@@ -1,3 +1,4 @@
+
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -24,6 +25,7 @@ const CartIcon = () => {
             <ItemCount>{cartCount}</ItemCount>
         </CartIconContainer>
     );
+
 };
 
 export default CartIcon;

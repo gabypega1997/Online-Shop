@@ -1,3 +1,4 @@
+
 import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -48,6 +49,7 @@ const Navigation = () => {
             <Outlet />
         </Fragment>
     );
+
 };
 
 export default Navigation;

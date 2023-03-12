@@ -15,6 +15,7 @@ const Shop = () => {
     useEffect(() => {
         const getCategoriesMap = async () => {
             dispatch(setIsLoading(true));
+
             const categoriesArray = await getCategoriesAndDocuments(
                 "categories"
             );
@@ -23,6 +24,7 @@ const Shop = () => {
         };
         getCategoriesMap();
     }, []);
+
     return (
         <Routes>
             <Route index element={<CategoriesPreview />} />

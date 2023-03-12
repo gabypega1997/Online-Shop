@@ -1,5 +1,7 @@
 import { useEffect } from "react";
+
 import { useDispatch } from "react-redux";
+
 
 import { Routes, Route } from "react-router-dom";
 
@@ -13,7 +15,9 @@ import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
 import { setCurentUser } from "./store/user/user.reducer";
+
 import MyAccount from "./components/my-account/my-account.component";
+
 
 const App = () => {
     const dispatch = useDispatch();
