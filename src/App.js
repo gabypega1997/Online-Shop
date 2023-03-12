@@ -1,5 +1,7 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
+
 
 import { Routes, Route } from "react-router-dom";
 
@@ -14,9 +16,11 @@ import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
 import { setCurentUser } from "./store/user/user.reducer";
 
+import MyAccount from "./components/my-account/my-account.component";
+
+
 const App = () => {
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         const unsubscribe = onAuthStateChangedListener((user) => {
@@ -30,7 +34,6 @@ const App = () => {
                     email,
                 }))(user);
 
-            console.log(setCurentUser(pickedUser));
             dispatch(setCurentUser(pickedUser));
         });
 
@@ -44,6 +47,7 @@ const App = () => {
                 <Route path="shop/*" element={<Shop />} />
                 <Route path="auth" element={<Authentication />} />
                 <Route path="checkout" element={<Checkout />} />
+                <Route path="account" element={<MyAccount />} />
             </Route>
         </Routes>
     );
